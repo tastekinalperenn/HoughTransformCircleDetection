@@ -1,13 +1,13 @@
 # HoughTransformCircleDetection
 
-**Overview**
+**Overview**<br />
 With this homework, we will learn the Hough Transform method, which is used to detect geometric
 shapes such as lines and circles. We will try to detect circles on images using Hough Transform. We
 will implement the steps of the algorithm from start to finish. We will compare the circles we detect
 with the given ground truth values and test how well the algorithm works. We will draw the circles
 that we find with using Hough Transform on the pictures.
 
-**Edge Detection**
+**Edge Detection**<br />
 I used the Canny edge detection method for edge detection. The algorithm basically consists of 5
 steps. Since edge detection is sensitive to noise, the image is blurred with Gaussian first. Then the
 gradient is calculated and the density and direction of the edges are determined. Thanks to non max
@@ -22,7 +22,7 @@ Maybe some morphological transformations can be done in this part.
 After detecting the edge, I convert the picture to matrix format for other operations and return it.
 
 
-**Hough Transform Implementation**
+**Hough Transform Implementation**<br />
 A circle equation with center (a,b) and radius r in the x-y coordinate plane is expressed as (x-a)^2
 + (y-b)^2 = r^2. Each point (x,y) on the circle indicates a circle with the formula (a-x)^2 +
 (b-y)^2 = r^2 in the a-b coordinate plane. What we’re trying to do with the Hough transform is to
@@ -42,7 +42,7 @@ format Output(inputfilename).jpg.
 
 
 
-**Failed Scenarios**
+**Failed Scenarios**<br />
 There may be several reasons why the algorithms is not detecting the correct circles. The first of
 these concerns the detection of edges. Lost or extra noise details during edge detection may cause the
 program to find or not find circles in different places. This problem can be solved by changing the
