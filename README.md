@@ -1,11 +1,11 @@
 # HoughTransformCircleDetection
 
 **Overview**<br />
-With this homework, we will learn the Hough Transform method, which is used to detect geometric
+With this implementation, we will learn the Hough Transform method, which is used to detect geometric
 shapes such as lines and circles. We will try to detect circles on images using Hough Transform. We
-will implement the steps of the algorithm from start to finish. We will compare the circles we detect
+will implement the steps of the algorithm from start to finish. We will compare the circles that we detect
 with the given ground truth values and test how well the algorithm works. We will draw the circles
-that we find with using Hough Transform on the pictures.
+that we find with using Hough Transform on the images.
 
 **Edge Detection**<br />
 I used the Canny edge detection method for edge detection. The algorithm basically consists of 5
@@ -35,7 +35,7 @@ addition, instead of taking all the points of the circle in the a-b plane, we sk
 for the program to run fast. For this reason, we sometimes miss the points that need the most votes,
 and points that are not the center of the circle can be voted too many times. In this case, I choose a
 certain number of the most voted points and choose the one closest to the central ground truth value.
-We draw the circles determined in the last step on the input picture. We save the output image in the
+We draw the circles determined in the last step on the input image. We save the output image in the
 format Output(inputfilename).jpg.
 
 
@@ -50,3 +50,21 @@ threshold values entered while detecting edges with Canny. Another problem may b
 are points on the circle in the a-b coordinate plane, the angle values are skipped 5 by 5 and some
 points are not processed in order for the program to run faster
 
+
+
+**Note**<br />
+- Sample inputs and outputs were shared. 
+- The sample run command of the program (inside the directory where the python file is located)
+python houghTransform.py imagePath groundTruthPath
+
+
+**Algorithm and Functions**<br />
+
+First, I use the edgeDetection function via the file I got from the command line and use the Canny Edge Detection method and return a matrix consisting of edges.<br />
+At the same time, I re-read the relevant image and keep it in the outputImage variable to finally draw the output image using the drawCircle method.<br />
+I keep the coordinates of all edge pixels in xAxis and yAxis.<br />
+I keep the groundTruth file from the file path I got from the command line using the readGroundTruth function.<br />
+I call the houghtransform function for all edge pixels as much as the number of circles that should be in the hough transformf part, and get the coordinates with the most votes (most likely to be the center of the circle) in a dictionary named counter. <br />
+In order for the program to work quickly, instead of all the circle points in the a-b coordinate plane, I skip the angles 5 by 5 and continue. For this reason, we sometimes miss the points that need the most votes, and points that are not the center of the circle can be voted too many times. 
+In this case, I choose a certain number of the most voted points and choose the one closest to the central ground truth value. <br />
+We draw the circles determined in the last step on the input picture.
