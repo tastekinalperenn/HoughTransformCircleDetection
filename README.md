@@ -23,9 +23,9 @@ After detecting the edge, I convert the picture to matrix format for other opera
 
 
 **Hough Transform Implementation**<br />
-A circle equation with center (a,b) and radius r in the x-y coordinate plane is expressed as (x-a)^2
-+ (y-b)^2 = r^2. Each point (x,y) on the circle indicates a circle with the formula (a-x)^2 +
-(b-y)^2 = r^2 in the a-b coordinate plane. What we’re trying to do with the Hough transform is to
+A circle equation with center (a,b) and radius r in the x-y coordinate plane is expressed as 
+(x-a)^2 + (y-b)^2 = r^2. Each point (x,y) on the circle indicates a circle with the formula 
+(a-x)^2 + (b-y)^2 = r^2 in the a-b coordinate plane. What we’re trying to do with the Hough transform is to
 find all the points of the corresponding circle in the a-b coordinate plane for each pixel of an image
 whose edges we have removed (here we used Canny). When this operation is done for all pixels,
 the coordinate where all these circles intersect in the a-b coordinate plane (or the most voted pixel
@@ -53,18 +53,18 @@ points are not processed in order for the program to run faster
 
 
 **Note**<br />
-- Sample inputs and outputs were shared. 
-- The sample run command of the program (inside the directory where the python file is located)
-python houghTransform.py imagePath groundTruthPath
+Sample inputs and outputs were shared. <br />
+The sample run command of the program (inside the directory where the python file is located)<br />
+-python houghTransform.py imagePath groundTruthPath
 
 
 **Algorithm and Functions**<br />
 
-First, I use the edgeDetection function via the file I got from the command line and use the Canny Edge Detection method and return a matrix consisting of edges.<br />
-At the same time, I re-read the relevant image and keep it in the outputImage variable to finally draw the output image using the drawCircle method.<br />
-I keep the coordinates of all edge pixels in xAxis and yAxis.<br />
-I keep the groundTruth file from the file path I got from the command line using the readGroundTruth function.<br />
-I call the houghtransform function for all edge pixels as much as the number of circles that should be in the hough transformf part, and get the coordinates with the most votes (most likely to be the center of the circle) in a dictionary named counter. <br />
-In order for the program to work quickly, instead of all the circle points in the a-b coordinate plane, I skip the angles 5 by 5 and continue. For this reason, we sometimes miss the points that need the most votes, and points that are not the center of the circle can be voted too many times. 
+-First, I use the edgeDetection function via the file I got from the command line and use the Canny Edge Detection method and return a matrix consisting of edges.<br />
+-At the same time, I re-read the relevant image and keep it in the outputImage variable to finally draw the output image using the drawCircle method.<br />
+-I keep the coordinates of all edge pixels in xAxis and yAxis.<br />
+-I keep the groundTruth file from the file path I got from the command line using the readGroundTruth function.<br />
+-I call the houghtransform function for all edge pixels as much as the number of circles that should be in the hough transformf part, and get the coordinates with the most votes (most likely to be the center of the circle) in a dictionary named counter. <br />
+-In order for the program to work quickly, instead of all the circle points in the a-b coordinate plane, I skip the angles 5 by 5 and continue. For this reason, we sometimes miss the points that need the most votes, and points that are not the center of the circle can be voted too many times. 
 In this case, I choose a certain number of the most voted points and choose the one closest to the central ground truth value. <br />
-We draw the circles determined in the last step on the input picture.
+-We draw the circles determined in the last step on the input picture.
